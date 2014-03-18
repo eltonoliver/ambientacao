@@ -221,7 +221,7 @@ class Examples extends CI_Controller {
 			return $output;
 		}
 	}
-
+	/*UPDATE*/
 	public function customers_management2()
 	{
 
