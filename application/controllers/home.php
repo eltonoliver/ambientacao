@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Index extends CI_Controller {
+class Home extends CI_Controller {
 
 	public function __construct(){
 		
@@ -8,7 +8,7 @@ class Index extends CI_Controller {
 	
 	}
 
-	public function home(){
+	public function index(){
 
 		$this->template->load('index','templates/home');	
 	}
