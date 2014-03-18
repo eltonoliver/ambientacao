@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
  	<header> 
- 		<title>:::AMBIENTAÇÃO - SENAC- AM </title>
+ 		<meta charset="UTF-8">
+
+ 		<title>:::AMBIENTAÇÃO - SENAC- AM:::</title>
+ 		<!--Bootstrap CSS -->
+ 		<style type="text/css" src="<?=base_url()?>assets/bootstrap/css/bootstrap.css"></style>
+ 		<style type="text/css" src="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css"></style>
+ 		<style type="text/css" src="<?=base_url()?>assets/bootstrap/css/bootstrap-theme.css"></style>
+ 		<style type="text/css" src="<?=base_url()?>assets/bootstrap/css/bootstrap-theme.min.css"></style>
+ 		<!--End Bootstrap CSS -->
  	</header>
  	<body>
  		
+
  		<?=$contents;?>
+
+
 
  	</body>
  	<!--Jquery-->
