@@ -5,16 +5,16 @@
 
  		<title>:::AMBIENTAÇÃO - SENAC- AM:::</title>
  		<!--Bootstrap CSS -->
- 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
- 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+ 		<link rel="stylesheet" href="http://bootswatch.com/cerulean/bootstrap.min.css">
+ 		<link rel="stylesheet" href="http://bootswatch.com/cerulean/bootstrap.csss">
  		<!--End Bootstrap CSS -->
+ 		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>assets/css/site_css.css">
  	</header>
  	<body>
- 		<div class="container">
+ 		
  			
  			<?=$contents;?>
 
-		</div>
 	
  	</body>
  	<!--Jquery-->
