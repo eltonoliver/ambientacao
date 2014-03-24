@@ -11,12 +11,13 @@
  		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>assets/css/site_css.css">
  	</header>
  	<body>
- 		
+ 		<div class="container">
  		
  			
  			<?=$contents;?>
 
-	
+
+ 		</div>	
  	</body>
  	<!--Jquery-->
  	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
