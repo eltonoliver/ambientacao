@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
-  <center><div class="col-md-3 col-md-offset-3"> ERROR = MSG</div></center>
+  <div class="col-md-3 col-md-offset-3"><center> ERROR = MSG</center></div>
   <br>
   <br>
   <br>
