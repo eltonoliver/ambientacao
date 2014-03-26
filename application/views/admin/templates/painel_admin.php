@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="col-md-12 col-md-offset 13" > <!--TOPO -->
 
@@ -31,7 +32,9 @@
 
 
   </div>
-  <div class="col-xs-12 col-md-8"  style="border:1px solid red">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-12 col-md-8" ><?=$output; ?></div>
 </div>
+
+
 
 
