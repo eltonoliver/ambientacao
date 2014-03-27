@@ -89,9 +89,11 @@ class Painel_admin extends CI_Controller {
 			$crud->set_subject('Conteúdo');
 			$crud->columns('id','titulo','conteudo');
 			$crud->display_as('id','Código')->display_as('titulo','Título')
-				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo');
+				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
+				 ->display_as('tbl_categoria_id','Categoria');
 			$crud->required_fields('titulo','conteudo','tbl_tipo_id');
 			$crud->set_relation('tbl_tipo_id','tbl_tipo','nome');
+			$crud->set_relation('tbl_categoria_id','tbl_categoria','nome');
 			$crud->field_type('tbl_usuario_id', 'hidden', $idUser);		
 			$output = $crud->render();
 
