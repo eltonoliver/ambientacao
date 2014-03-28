@@ -9,6 +9,7 @@ class Painel_admin extends CI_Controller {
 	   parent::__construct();
 
 	   $this->load->library('grocery_CRUD');
+	   $this->load->library('mineraDados');
 		
 	}
 
@@ -103,6 +104,43 @@ class Painel_admin extends CI_Controller {
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}	
+		
+	}
+
+	public function leitura(){
+				
+				 $this->db->where('id',3); 	
+		$dados = $this->db->get('tbl_conteudo')->result();
+
+		foreach ($dados as $key => $value) {
+			
+			$array[] = explode(';', strip_tags($value->conteudo)) ;
+
+		}
+
+		
+
+
+		/*$array = array_pop($array);
+		$ultimo = count($array) - 2;
+
+		$resposta = trim($array[$ultimo]);
+
+		print_r($resposta);
+		echo $resposta[1];*/
+		echo '<pre>';
+			 $n = new mineraDados();
+		   foreach ($n->setArrayDados($array) as  $value) {
+		   	$x = $value;
+		    	print_r($value);
+
+		    } 
+
+		    echo $x[1];
+
+
+
+
 		
 	}
 
