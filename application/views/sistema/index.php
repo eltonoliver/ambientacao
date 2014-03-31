@@ -68,7 +68,7 @@
 									 		$this->db->where('tbl_categoria_id', $value->id);
 									$sub =	$this->db->get('tbl_conteudo')->result();
 									foreach ($sub as $menu) {
-										echo  "<br>".$menu->titulo."<br>";
+										echo  '<br><a href="'.base_url().'sistema/ambientacao/slide/'.$menu->id.'">'.$menu->titulo."</a><br>";
 									}
 
 								}	
