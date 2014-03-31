@@ -37,7 +37,7 @@ class Ambientacao extends CI_Controller {
 			}else{
 
 
-				echo '<img src="'.base_url().'/assets/conteudo/'.$value->imagem.'" />';
+				echo '<img src="'.base_url().'assets/uploads/conteudo/'.$value->imagem.'" />';
 
 
 
