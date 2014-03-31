@@ -3,12 +3,15 @@
 class Ambientacao extends CI_Controller {
 
 	public function __construct(){
+		
 		parent::__construct();
-		//Do your magic here
+
+		$this->load->library('grocery_CRUD');
 	}
 
 	public function index(){
 		
+		$this->template->load('sistema/index','sistema/templates/home');
 	}
 
 }
