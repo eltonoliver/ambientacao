@@ -43,6 +43,7 @@ $(function(){
 
 				$('.gc-file-upload').hide();
 				$('.fileinput-button').hide();
+				$('#imagem_display_as_box').hide();
 
 
 			}
