@@ -173,6 +173,35 @@ JAVASCRIPT;
 		}	
 		
 	}
+
+	public function cadastraFuncionario($id = null){
+		try{
+			$crud = new grocery_CRUD();
+			
+			/*ID USER*/
+			$idUser = $this->setIdUser(11)->getIdUser();
+
+			$crud->set_crud_url_path(site_url('admin/painel_admin/cadastraFuncionario'));
+			$crud->set_table('tbl_funcionario');
+			$crud->set_subject('Funcionário');
+			$crud->columns('id','nome','matricula');
+
+			$crud->display_as('nome','Nome')->display_as('matricula','Matrícula')->display_as('id','Código');
+				
+			$crud->required_fields('nome','matricula');		
+			$crud->unique_fields('matricula','matricula');
+			$crud->field_type('tbl_usuario_id', 'hidden', $idUser);	
+
+			$output = $crud->render();
+
+			$this->template->load('admin/index','admin/templates/cadastra_funcionario',$output);	
+
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}	
+
+
+	}
 	
 
 	
