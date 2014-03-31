@@ -7,12 +7,12 @@
 
  		<!--Bootstrap CSS -->
  		
- 		<link rel="stylesheet" href="http://bootswatch.com/cerulean/bootstrap.csss">
+ 		<link rel="stylesheet" href="http://bootswatch.com/start/bootstrap.css">
  		<!--End Bootstrap CSS -->
  		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>assets/css/site_css.css">
  		<!--JQUERY UI -->
  		<link rel="stylesheet" href="/resources/demos/style.css">
- 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/excite-bike/jquery-ui.css">
  		<!--END JQUERY UI-->
  		
  		<?php 
@@ -55,35 +55,34 @@
 				</div>
 
 			  <div class="col-xs-6 col-md-4" >
-			  	<?php  print_r($menu); ?>
-			  
+			  	 
 			  	<!-- **************************************MENU ACCORDION********************************* -->
 			  		<div id="accordion">
-						  <h3>Section 1</h3>
-						  <div>
-						    <p>
-						    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-						    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-						    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-						    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-						    </p>
-						  </div>
-						  <h3>Section 2</h3>
-						  <div>
-						    <p>
-						    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-						    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-						    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-						    suscipit faucibus urna.
-						    </p>
-						  </div>
-						  
+
+							<?php 
+
+								$dados = $this->db->get('tbl_categoria')->result();
+								foreach ($dados as $value) {
+
+									echo "<h3>".$value->nome."<h3>";
+									 		$this->db->where('tbl_categoria_id', $value->id);
+									$sub =	$this->db->get('tbl_conteudo')->result();
+									foreach ($sub as $menu) {
+										echo  "<br>".$menu->titulo."<br>";
+									}
+
+								}	
+							 ?>
+									  <!-- NOME CATEGORIA -->				
+						 
 					</div>
 				<!-- **************************************MENU ACCORDION********************************* -->	
 
+					
 			  </div>
  		
- 			
+
+
  			<?=$contents;?>
 
  			</div>
