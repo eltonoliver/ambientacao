@@ -10,8 +10,24 @@ class Ambientacao extends CI_Controller {
 	}
 
 	public function index(){
-		
-		$this->template->load('sistema/index','sistema/templates/home');
+		/**************MENU****************/
+		$dados['menu'] = $this->db->query(
+			'
+				SELECT
+				tbl_conteudo.id,
+				tbl_conteudo.titulo,
+				tbl_conteudo.imagem,
+				tbl_conteudo.conteudo,
+				tbl_categoria.nome as catNome,
+				tbl_categoria.id as catId,
+				tbl_conteudo.tbl_tipo_id
+				FROM
+				tbl_categoria
+				Inner Join tbl_conteudo ON tbl_categoria.id = tbl_conteudo.tbl_categoria_id
+			'
+		)->result();
+		/**************MENU****************/
+		$this->template->load('sistema/index','sistema/templates/home',$dados);
 	}
 
 }

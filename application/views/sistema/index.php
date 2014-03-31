@@ -55,7 +55,7 @@
 				</div>
 
 			  <div class="col-xs-6 col-md-4" >
-			  	
+			  	<?php  print_r($menu); ?>
 			  
 			  	<!-- **************************************MENU ACCORDION********************************* -->
 			  		<div id="accordion">
