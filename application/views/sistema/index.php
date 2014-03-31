@@ -68,7 +68,7 @@
 									 		$this->db->where('tbl_categoria_id', $value->id);
 									$sub =	$this->db->get('tbl_conteudo')->result();
 									foreach ($sub as $menu) {
-										echo  '<br><a href="'.base_url().'sistema/ambientacao/slide/'.$menu->id.'">'.$menu->titulo."</a><br>";
+										echo  '<p><a  class="subMenu" href="'.base_url().'sistema/ambientacao/slide/'.$menu->id.'"> > '.nbs(2).$menu->titulo."</a></p>";
 									}
 
 								}	
@@ -106,5 +106,39 @@
  	<!--Custon -->
  	<script type="text/javascript" src="<?=base_url(); ?>assets/js/script.js"></script>
  	<!--End Custon -->
+ 	<script type="text/javascript">
+ 			$(function(){
 
+ 				$('.subMenu').click(function(){
+ 					
+ 					var href = $(this).attr('href');
+ 					$.ajax({
+ 						  url: href,
+ 						  type: 'POST',
+ 						  dataType: 'html',
+ 						  
+ 						  beforeSend: function(){
+ 						  	$("#ambiente").html("<center>Carregando...</center>");
+ 						  },
+ 						  complete: function(xhr, textStatus) {
+ 						    //called when complete
+ 						   
+ 						  },
+ 						  success: function(data, textStatus, xhr) {
+ 						    //called when successful
+ 						    $("#ambiente").html("");
+ 						    $("#ambiente").html(data);
+ 						  },
+ 						  error: function(xhr, textStatus, errorThrown) {
+ 						    //called when there is an error
+ 						    alert('error');
+ 						  }
+ 						});					
+
+
+ 					return false;
+
+ 				})
+ 			})
+ 	</script>	
 </html>

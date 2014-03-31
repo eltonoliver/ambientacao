@@ -55,9 +55,17 @@ $(function(){
 		
 
 	}
+
    /*******************CADASTRACONTEUDO************************************/
     $(function() {
     $( "#accordion" ).accordion();
+
+
   });
 
+
+
+
+
 });
+

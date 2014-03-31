@@ -14,6 +14,11 @@ class Ambientacao extends CI_Controller {
 		$this->template->load('sistema/index','sistema/templates/home');
 	}
 
+	public function slide($id = null){
+
+		echo "Ola Mundo".$id;
+	}
+
 }
 
 /* End of file system.php */
