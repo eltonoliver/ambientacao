@@ -10,6 +10,10 @@
  		<link rel="stylesheet" href="http://bootswatch.com/cerulean/bootstrap.csss">
  		<!--End Bootstrap CSS -->
  		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>assets/css/site_css.css">
+ 		<!--JQUERY UI -->
+ 		<link rel="stylesheet" href="/resources/demos/style.css">
+ 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ 		<!--END JQUERY UI-->
  		
  		<?php 
 		if(isset($css_files) && isset($js_files)):
@@ -53,9 +57,29 @@
 			  <div class="col-xs-6 col-md-4" >
 			  	
 			  
-
-			  		MENU
-
+			  	<!-- **************************************MENU ACCORDION********************************* -->
+			  		<div id="accordion">
+						  <h3>Section 1</h3>
+						  <div>
+						    <p>
+						    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+						    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+						    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+						    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+						    </p>
+						  </div>
+						  <h3>Section 2</h3>
+						  <div>
+						    <p>
+						    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+						    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+						    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+						    suscipit faucibus urna.
+						    </p>
+						  </div>
+						  
+					</div>
+				<!-- **************************************MENU ACCORDION********************************* -->	
 
 			  </div>
  		
@@ -73,7 +97,10 @@
  		</div>
 
  	</body>
- 	
+ 	<!--Jquery UI -->
+ 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ 	<!--End Jquery UI-->
  	<!--Script Boostrap -->
  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
  	<!--End Script Boostrap -->
