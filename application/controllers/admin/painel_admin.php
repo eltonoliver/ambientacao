@@ -91,9 +91,13 @@ class Painel_admin extends CI_Controller {
 			$crud->columns('id','titulo','conteudo');
 			$crud->display_as('id','Código')->display_as('titulo','Título')
 				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
-				 ->display_as('tbl_categoria_id','Categoria');
-			$crud->add_fields('titulo','tbl_tipo_id','conteudo','tbl_categoria_id','tbl_usuario_id');
-			$crud->required_fields('titulo','conteudo','tbl_tipo_id');
+				 ->display_as('tbl_categoria_id','Categoria')->display_as('imagem','Imagem');
+			$crud->add_fields('titulo','tbl_tipo_id','conteudo','imagem','tbl_categoria_id','tbl_usuario_id');
+			$crud->required_fields('titulo','tbl_tipo_id','tbl_categoria_id');
+
+			/**UPLOAD**/
+			$crud->set_field_upload('imagem','assets/uploads/conteudo');
+			/**END UPLOAD**/
 			$crud->set_relation('tbl_tipo_id','tbl_tipo','nome');
 			$crud->set_relation('tbl_categoria_id','tbl_categoria','nome');
 			$crud->field_type('tbl_usuario_id', 'hidden', $idUser);		
@@ -107,39 +111,11 @@ class Painel_admin extends CI_Controller {
 		}	
 		
 	}
-	/********************************************************/
+	
 
-	public function cadastraConteudoImagem($id = null){
-   		 try{
-			/*ID USER*/
-			$idUser = $this->setIdUser(11)->getIdUser();
+	
 
-			$crud = new grocery_CRUD();
-
-			$crud->set_crud_url_path(site_url('admin/painel_admin/cadastraConteudo'));
-			$crud->set_table('tbl_conteudo');
-			$crud->set_subject('Conteúdo');
-			$crud->columns('id','titulo','conteudo');
-			$crud->display_as('id','Código')->display_as('titulo','Título')
-				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
-				 ->display_as('tbl_categoria_id','Categoria');
-			$crud->add_fields('titulo','tbl_tipo_id','conteudo','tbl_categoria_id','tbl_usuario_id');
-			$crud->required_fields('titulo','conteudo','tbl_tipo_id');
-			$crud->set_relation('tbl_tipo_id','tbl_tipo','nome');
-			$crud->set_relation('tbl_categoria_id','tbl_categoria','nome');
-			$crud->field_type('tbl_usuario_id', 'hidden', $idUser);		
-			$output = $crud->render();
-
-			 $this->template->load('admin/index','admin/templates/cadastra_conteudo',$output);	
-
-
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}	
-		
-	}
-
-
+	/***********************END********************************/
 	/*************DEBUG***************************************/
 	public function leitura(){
 				
