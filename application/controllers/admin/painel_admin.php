@@ -77,7 +77,7 @@ class Painel_admin extends CI_Controller {
 
 	}
 
-
+	/*CONTROLADOR CADASTRA CONTEUDO: HTML E QUESTÕES*/
 	public function cadastraConteudo($id = null){
    		 try{
 			/*ID USER*/
@@ -92,6 +92,38 @@ class Painel_admin extends CI_Controller {
 			$crud->display_as('id','Código')->display_as('titulo','Título')
 				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
 				 ->display_as('tbl_categoria_id','Categoria');
+			$crud->add_fields('titulo','tbl_tipo_id','conteudo','tbl_categoria_id','tbl_usuario_id');
+			$crud->required_fields('titulo','conteudo','tbl_tipo_id');
+			$crud->set_relation('tbl_tipo_id','tbl_tipo','nome');
+			$crud->set_relation('tbl_categoria_id','tbl_categoria','nome');
+			$crud->field_type('tbl_usuario_id', 'hidden', $idUser);		
+			$output = $crud->render();
+
+			 $this->template->load('admin/index','admin/templates/cadastra_conteudo',$output);	
+
+
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}	
+		
+	}
+	/********************************************************/
+
+	public function cadastraConteudoImagem($id = null){
+   		 try{
+			/*ID USER*/
+			$idUser = $this->setIdUser(11)->getIdUser();
+
+			$crud = new grocery_CRUD();
+
+			$crud->set_crud_url_path(site_url('admin/painel_admin/cadastraConteudo'));
+			$crud->set_table('tbl_conteudo');
+			$crud->set_subject('Conteúdo');
+			$crud->columns('id','titulo','conteudo');
+			$crud->display_as('id','Código')->display_as('titulo','Título')
+				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
+				 ->display_as('tbl_categoria_id','Categoria');
+			$crud->add_fields('titulo','tbl_tipo_id','conteudo','tbl_categoria_id','tbl_usuario_id');
 			$crud->required_fields('titulo','conteudo','tbl_tipo_id');
 			$crud->set_relation('tbl_tipo_id','tbl_tipo','nome');
 			$crud->set_relation('tbl_categoria_id','tbl_categoria','nome');
@@ -107,36 +139,37 @@ class Painel_admin extends CI_Controller {
 		
 	}
 
+
+	/*************DEBUG***************************************/
 	public function leitura(){
 				
 				 $this->db->where('id',3); 	
 		$dados = $this->db->get('tbl_conteudo')->result();
-
-		foreach ($dados as $key => $value) {
+		
+		foreach ($dados as $value) {
 			
-			$array[] = explode(';', strip_tags($value->conteudo)) ;
+			$array = $value->conteudo ;
 
 		}
 
-		
 
+		$function = function( $dados ){
 
-		/*$array = array_pop($array);
-		$ultimo = count($array) - 2;
+			$lista = explode(';', $dados);
+			if(is_array($lista)){
 
-		$resposta = trim($array[$ultimo]);
+				$lista = array_filter($lista);
+				$ultimo = end($lista);
+			}
 
-		print_r($resposta);
-		echo $resposta[1];*/
-		echo '<pre>';
-			 $n = new mineraDados();
-		   foreach ($n->setArrayDados($array) as  $value) {
-		   	$x = $value;
-		    	print_r($value);
+			echo strip_tags(($ultimo));
+			
+			
 
-		    } 
+		};
+		 
 
-		    echo $x[1];
+		echo $function($array);
 
 
 
@@ -144,7 +177,7 @@ class Painel_admin extends CI_Controller {
 		
 	}
 
-
+	/********END DEBUG************************************/
 	/*RETURN ID USER*/
 	public function setIdUser($id = null){
 

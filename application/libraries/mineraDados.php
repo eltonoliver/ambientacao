@@ -1,38 +1,45 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
 
 class mineraDados{
 
     public $array;
 
-    public function setArrayDados($dados = array() ){
+    public function separaArray($dados = null){
 
-        $this->array = array_pop($dados);
+        $this->array = explode(';',$dados);
         return $this;
 
     }
 
-    public function removeUtimoElemento(){
+    public function removeUltimoIndice(){
 
-        $this->array = array_pop($this->array);
-        return $this;
+        if(is_array($this->array)){    
+            $this->array = (array_filter($this->array));
+        }else{
 
+        $this->array = false;
     }
 
-    public function getUltimoArray(){
-
-        $this->array =count($this->array) - 2;
         return $this;
-
     }
 
     public function getResposta(){
+    
+        if($this->removeUltimoIndice()){
+        
+        $this->array = end($this->array);
+        
+        }
+         return $this;
+    }   
 
-        $this->array =  trim($this->array[$this->getUltimoArray()]);
-        return $this;
 
-    }
+/*
+****Pegar a resposta******
+$work = new mineraDados();
+$work->separaArray($dados)->getResposta(); // pegar a resposta
 
-
+*/
 
 
 }

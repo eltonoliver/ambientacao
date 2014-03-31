@@ -1,4 +1,7 @@
 $(function(){
 
-	/*alert(1);*/
+	$('#field-tbl_tipo_id').live('change',function(){
+
+			alert(1);
+	});
 });
