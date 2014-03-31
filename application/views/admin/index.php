@@ -77,7 +77,7 @@
 			  			<li <?=($page == "cadastraUsuario")   ?  'class="active"' : ""; ?>><a href="<?=base_url(); ?>admin/painel_admin/cadastraUsuario/" ><span class="glyphicon glyphicon-user"></span> Usuários            </a></li>
 			  			<li <?=($page == "cadastraCategoria") ?  'class="active"' : ""; ?>><a href="<?=base_url(); ?>admin/painel_admin/cadastraCategoria/" ><span class="glyphicon glyphicon-th-list"></span> Categorias          </a></li>
 			  			<li  <?=($page == "cadastraConteudo" || $page == "cadastraConteudoImagem") ?  'class="active"' : ""; ?>><a href="<?=base_url(); ?>admin/painel_admin/cadastraConteudo/"><span class="glyphicon glyphicon-ok-sign"></span> Conteúdo </a></li>
-			  			<li><a href=""><span class="glyphicon glyphicon-ok-sign"></span> Perguntas </a></li>
+			  			<!--<li><a href=""><span class="glyphicon glyphicon-ok-sign"></span> Perguntas </a></li>-->
 			  			<li><a href=""><span class="glyphicon glyphicon-off"></span> Sair do Sistema </a></li>
 
 					</ul>

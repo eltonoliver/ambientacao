@@ -88,7 +88,7 @@ class Painel_admin extends CI_Controller {
 			$crud->set_crud_url_path(site_url('admin/painel_admin/cadastraConteudo'));
 			$crud->set_table('tbl_conteudo');
 			$crud->set_subject('Conteúdo');
-			$crud->columns('id','titulo','conteudo');
+			$crud->columns('id','titulo','conteudo','imagem');
 			
 			$crud->display_as('id','Código')->display_as('titulo','Título')
 				 ->display_as('conteudo','Conteúdo')->display_as('tbl_tipo_id','Tipo')
