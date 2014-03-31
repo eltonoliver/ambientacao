@@ -16,7 +16,34 @@ class Ambientacao extends CI_Controller {
 
 	public function slide($id = null){
 
-		echo "Ola Mundo".$id;
+				 $this->db->where('id', $id);
+		$dados = $this->db->get('tbl_conteudo')->result();
+		foreach ($dados as $value) {
+			
+			if(isset($value->conteudo) && !empty($value->conteudo)){
+
+/****************************************************************************/					
+				if($value->tbl_tipo_id == 3){
+
+
+					echo " QUESTÕES ";
+				}else{
+
+					echo "Conteúdo";	
+				}
+
+				
+
+			}else{
+
+
+				echo '<img src="'.base_url().'/assets/conteudo/'.$value->imagem.'" />';
+
+
+
+			}
+/****************************************************************************/				
+		}
 	}
 
 }
