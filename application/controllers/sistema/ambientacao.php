@@ -23,10 +23,41 @@ class Ambientacao extends CI_Controller {
 			if(isset($value->conteudo) && !empty($value->conteudo)){
 
 /****************************************************************************/					
-				if($value->tbl_tipo_id == 3){
+				if($value->tbl_tipo_id == 3){/*QUESTOES*/
+						/*FUNCAO TRATA QUESTOES*/
+							$function = function( $dados ){
 
+							$lista = explode(';', $dados);
+							if(is_array($lista)){
 
-					echo " QUESTÕES ";
+								$lista = array_filter($lista);
+							
+							}
+	
+							
+							return $lista;
+						};
+						/*FIM FUNCAO TRATA QUESTOES*/
+						 
+
+						$listaQuestoes = $function($value->conteudo);
+
+						foreach (array_pop($listaQuestoes as $questao) {
+							
+							echo $questao."<br>";
+						}
+				
+
+					echo ' 
+
+						<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div> 
+
+						<div class="bg-success" style="text-align:justify;padding:10px 10px 10px 10px ;">
+
+							QUESTÕES
+
+						</div>
+						';
 				}else{
 
 					echo '
