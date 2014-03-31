@@ -128,6 +128,8 @@
  						    //called when successful
  						    $("#ambiente").html("");
  						    $("#ambiente").html(data);
+ 						    $("#ambiente").hide();
+ 						    $("#ambiente").show('drop');
  						  },
  						  error: function(xhr, textStatus, errorThrown) {
  						    //called when there is an error
