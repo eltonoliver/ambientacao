@@ -1,3 +1,37 @@
+<?php 
+
+/*UTILIZANDO O CORE DO CODEIGNITER*/
+	$system_path = 'system';
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (realpath($system_path) !== FALSE)
+	{
+		$system_path = realpath($system_path).'/';
+	}
+
+	// ensure there's a trailing slash
+	$system_path = rtrim($system_path, '/').'/';
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+	}
+
+
+	require_once BASEPATH.'core/CodeIgniter.php';
+
+
+$CI =& get_instance();
+
+$CI->load->database();
+
+/***************************************************/
+?>
 <?php
 
 	$this->set_css($this->default_theme_path.'/flexigrid/css/flexigrid.css');
