@@ -15,97 +15,107 @@ class Ambientacao extends CI_Controller {
 	}
 
 	public function slide($id = null){
+		try{
+					 $this->db->where('id', $id);
+			$dados = $this->db->get('tbl_conteudo')->result();
+			if(!$dados){
 
-				 $this->db->where('id', $id);
-		$dados = $this->db->get('tbl_conteudo')->result();
-		foreach ($dados as $value) {
-			
-			if(isset($value->conteudo) && !empty($value->conteudo)){
+				throw new Exception("Fim");
+				
+			}
 
-/****************************************************************************/					
-				if($value->tbl_tipo_id == 3){/*QUESTOES*/
-						/*FUNCAO TRATA QUESTOES*/
-							$function = function( $dados ){
+			foreach ($dados as $value) {
+				
+				if(isset($value->conteudo) && !empty($value->conteudo)){
 
-								$lista = explode(',', $dados);
-								if(is_array($lista)){
+	/****************************************************************************/					
+					if($value->tbl_tipo_id == 3){/*QUESTOES*/
+							/*FUNCAO TRATA QUESTOES*/
+								$function = function( $dados ){
 
-									$lista = array_filter($lista);
-								
-								}
-	
-							
-							return $lista;
-						};
-						/*FIM FUNCAO TRATA QUESTOES*/
-						 
+									$lista = explode(',', $dados);
+									if(is_array($lista)){
 
-						$listaQuestoes = $function($value->conteudo);
-						
-						unset($listaQuestoes[count($listaQuestoes)-1]);
-
-					echo ' 
-
-						<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div> 
-
-						<div class="bg-success" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
-						<br><br>
-
-							';
-							echo form_open('url');
-
-								/*********************QUESTOES*********************/
-										
-									foreach ($listaQuestoes as $questao) {
-													
-										echo $questao;
+										$lista = array_filter($lista);
+									
 									}
+		
+								
+								return $lista;
+							};
+							/*FIM FUNCAO TRATA QUESTOES*/
+							 
 
-								 echo '
-								 
-								 		<br><br><br>
-								 		<input type="hidden" name="idquestao" value="'.$value->id.'" />
-								 		<input type="hidden" name="idcategoria" value="'.$value->tbl_categoria_id.'" />
-								 		<input type="hidden" name="idfuncionario" value="100" />
-      									<button type="submit" class="btn btn-default">Enviar</button>
-    								
-								 ';	
-							echo form_close();		
-								/*********************QUESTOES*********************/	
+							$listaQuestoes = $function($value->conteudo);
+							
+							unset($listaQuestoes[count($listaQuestoes)-1]);
 
+						echo ' 
+
+							<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div> 
+
+							<div class="bg-success" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
+							<br><br>
+
+								';
+								echo form_open('url');
+
+									/*********************QUESTOES*********************/
+											
+										foreach ($listaQuestoes as $questao) {
+														
+											echo $questao;
+										}
+
+									 echo '
+									 
+									 		<br><br><br>
+									 		<input type="hidden" id="idConteudo" name="idConteudo" value="'.$value->id.'" />
+									 		<input type="hidden" name="idcategoria" value="'.$value->tbl_categoria_id.'" />
+									 		<input type="hidden" name="idfuncionario" value="100" />
+	      									<button type="submit" class="btn btn-default">Enviar</button>
+	    								
+									 ';	
+								echo form_close();		
+									/*********************QUESTOES*********************/	
+
+
+							echo '
+
+							</div>
+							';
+					}else{
 
 						echo '
 
-						</div>
-						';
+							<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div>
+							<div class="bg-warning" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
+									
+									'.$value->conteudo.'
+							
+							
+							</div>
+							<input type="hidden" id="idConteudo" name="idConteudo" value="'.$value->id.'" />
+						';	
+					}
+
+					
+
 				}else{
 
-					echo '
 
-						<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div>
-						<div class="bg-warning" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
-								
-								'.$value->conteudo.'
-						
-						
-						</div>
+					echo '<img src="'.base_url().'assets/uploads/conteudo/'.$value->imagem.'" class="img-responsive"/><input type="hidden" id="idConteudo" name="idConteudo" value="'.$value->id.'" />';
 
-					';	
+
+
 				}
-
-				
-
-			}else{
-
-
-				echo '<img src="'.base_url().'assets/uploads/conteudo/'.$value->imagem.'" class="img-responsive"/>';
-
-
-
+	/****************************************************************************/				
 			}
-/****************************************************************************/				
+		 }catch(Exception $e){
+
+		 	echo $e->getMessage();
+		 }
 		}
-	}
 
 }
 

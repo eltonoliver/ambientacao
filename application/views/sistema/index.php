@@ -54,7 +54,7 @@
 
 				</div>
 
-			  <div class="col-xs-6 col-md-4" style="height:650px;overflow:auto; id="menu_slide">
+			  <div class="col-xs-6 col-md-4" style="height:650px;overflow:auto;" id="menu_slide">
 			  	 
 			  	<!-- **************************************MENU ACCORDION********************************* -->
 			  		<div id="accordion">
@@ -140,6 +140,150 @@
  					return false;
 
  				})
+
+
+ 				$("#btnVoltar").click(function(){
+ 					var idConteudo = $("#idConteudo").val();
+ 					if(idConteudo > 2){
+ 						idConteudo -= 1;
+
+ 					}else{
+
+ 						idConteudo = 1;
+ 					}
+
+
+ 					/************VOLTAR***************/
+ 						var href = "http://localhost/ambientacao/sistema/ambientacao/slide/"+idConteudo;
+	 					$.ajax({
+	 						  url: href,
+	 						  type: 'POST',
+	 						  dataType: 'html',
+	 						  
+	 						  beforeSend: function(){
+	 						  	$("#ambiente").html("<center>Carregando...</center>");
+	 						  },
+	 						  complete: function(xhr, textStatus) {
+	 						    //called when complete
+	 						   
+	 						  },
+	 						  success: function(data, textStatus, xhr) {
+	 						    //called when successful
+	 						    $("#ambiente").html("");
+	 						    $("#ambiente").html(data).hide().show('drop');
+	 						    
+	 						  },
+	 						  error: function(xhr, textStatus, errorThrown) {
+	 						    //called when there is an error
+	 						    alert('error');
+	 						  }
+	 						});					
+
+
+ 						return false;
+
+ 					/*************VOLTAR**************/
+ 				});
+
+
+
+
+				$("#btnProximo").click(function(){
+ 					var idConteudo = parseInt($("#idConteudo").val());
+ 						if(idConteudo != 0){
+
+ 							idConteudo += 1;
+ 						}
+
+ 						
+ 					/************PROXIMO***************/
+ 						var href = "http://localhost/ambientacao/sistema/ambientacao/slide/"+idConteudo;
+	 					$.ajax({
+	 						  url: href,
+	 						  type: 'POST',
+	 						  dataType: 'html',
+	 						  
+	 						  beforeSend: function(){
+	 						  	$("#ambiente").html("<center>Carregando...</center>");
+	 						  },
+	 						  complete: function(xhr, textStatus) {
+	 						    //called when complete
+	 						   
+	 						  },
+	 						  success: function(data, textStatus, xhr) {
+	 						    //called when successful
+	 						    if(data == "Fim") { window.location.reload(); }
+	 						    $("#ambiente").html("");
+	 						    $("#ambiente").html(data).hide().show('drop');
+	 						    
+	 						  },
+	 						  error: function(xhr, textStatus, errorThrown) {
+	 						    //called when there is an error
+	 						    alert('error');
+	 						  }
+	 						});					
+
+
+ 						return false;
+
+ 					/*************PROXIMO**************/
+ 				});
+
+				
+				function btnAuto(){
+				 	$("#btnAuto").click(function(){
+						  setInterval(function(){
+						  	
+			 					var idConteudo = parseInt($("#idConteudo").val());
+			 						if(idConteudo != 0){
+
+			 							idConteudo += 1;
+			 						}
+
+			 						
+			 					/************AUTO***************/
+			 						var href = "http://localhost/ambientacao/sistema/ambientacao/slide/"+idConteudo;
+				 					$.ajax({
+				 						  url: href,
+				 						  type: 'POST',
+				 						  dataType: 'html',
+				 						  
+				 						  beforeSend: function(){
+				 						  	$("#ambiente").html("<center>Carregando...</center>");
+				 						  },
+				 						  complete: function(xhr, textStatus) {
+				 						    //called when complete
+				 						   
+				 						  },
+				 						  success: function(data, textStatus, xhr) {
+				 						    //called when successful
+				 						     if(data == "Fim") { window.location.reload(); }	
+				 						    	$("#ambiente").html("");
+				 						    	$("#ambiente").html(data).hide().show('drop');
+				 						    
+				 						  },
+				 						  error: function(xhr, textStatus, errorThrown) {
+				 						    //called when there is an error
+				 						    alert('error');
+				 						  }
+				 						});					
+
+
+			 						return false;
+		 					 }, 3000);	
+		 					/*************AUTO**************/
+		 				});
+
+				
+					}
+					
+					btnAuto();
+					
+					/*função para parar a rotação*/
+						
+					
+
+
  			})
  	</script>	
 </html>
