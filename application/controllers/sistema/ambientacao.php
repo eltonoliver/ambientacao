@@ -27,12 +27,12 @@ class Ambientacao extends CI_Controller {
 						/*FUNCAO TRATA QUESTOES*/
 							$function = function( $dados ){
 
-							$lista = explode(';', $dados);
-							if(is_array($lista)){
+								$lista = explode(',', $dados);
+								if(is_array($lista)){
 
-								$lista = array_filter($lista);
-							
-							}
+									$lista = array_filter($lista);
+								
+								}
 	
 							
 							return $lista;
@@ -41,20 +41,32 @@ class Ambientacao extends CI_Controller {
 						 
 
 						$listaQuestoes = $function($value->conteudo);
-
-						foreach (array_pop($listaQuestoes as $questao) {
-							
-							echo $questao."<br>";
-						}
-				
+						
+						unset($listaQuestoes[count($listaQuestoes)-1]);
 
 					echo ' 
 
 						<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> '.$value->titulo.' </center></div> 
 
-						<div class="bg-success" style="text-align:justify;padding:10px 10px 10px 10px ;">
+						<div class="bg-success" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
+						<br><br>
 
-							QUESTÕES
+							';
+							echo form_open('url');
+
+								/*********************QUESTOES*********************/
+										
+									foreach ($listaQuestoes as $questao) {
+													
+										echo $questao;
+									}
+
+
+							echo form_close();		
+								/*********************QUESTOES*********************/	
+
+
+						echo '
 
 						</div>
 						';
@@ -63,7 +75,7 @@ class Ambientacao extends CI_Controller {
 					echo '
 
 						<div style="font-size:25px;font-weight: bold;color:white;" class="bg-primary"><center> Título </center></div>
-						<div class="bg-warning" style="text-align:justify;padding:10px 10px 10px 10px ;">
+						<div class="bg-warning" style="text-align:justify;padding:10px 10px 10px 10px ;height:600px;">
 								Conteúdo <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h1>
 								
 								<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
@@ -95,7 +107,7 @@ class Ambientacao extends CI_Controller {
 			}else{
 
 
-				echo '<img src="'.base_url().'assets/uploads/conteudo/'.$value->imagem.'" />';
+				echo '<img src="'.base_url().'assets/uploads/conteudo/'.$value->imagem.'" class="img-responsive"/>';
 
 
 
