@@ -105,6 +105,7 @@
  	<!--End Script Boostrap -->
  	<!--Custon -->
  	<script type="text/javascript" src="<?=base_url(); ?>assets/js/script.js"></script>
+ 	<script type="text/javascript" src="<?=base_url(); ?>assets/js/jquery.Storage.js"></script>
  	<!--End Custon -->
  	<script type="text/javascript">
  			$(function(){
@@ -230,9 +231,9 @@
  				});
 
 				
-				function btnAuto(){
+				
 				 	$("#btnAuto").click(function(){
-						  setInterval(function(){
+						 window.setInterval(function(){
 						  	
 			 					var idConteudo = parseInt($("#idConteudo").val());
 			 						if(idConteudo != 0){
@@ -273,17 +274,78 @@
 		 					 }, 3000);	
 		 					/*************AUTO**************/
 		 				});
+					
+					
+					
+					$("#btnParar").click(function(){
+						idConteudo = parseInt($("#idConteudo").val());
+						//GUARDA ID NO STORAGE
+						
+						$.Storage.saveItem('idConteudo',idConteudo);
+						$.Storage.saveItem('executar',1);
+						
+						window.location.reload();
+							
+					});
 
-				
+					var varExecSlide = $.Storage.loadItem('executar');
+
+					if(varExecSlide == 1){
+						var idSlide = $.Storage.loadItem('idConteudo');
+
+						var href = "http://localhost/ambientacao/sistema/ambientacao/slide/"+idSlide;
+				 					$.ajax({
+				 						  url: href,
+				 						  type: 'POST',
+				 						  dataType: 'html',
+				 						  
+				 						  beforeSend: function(){
+				 						  	$("#ambiente").html("<center>Carregando...</center>");
+				 						  },
+				 						  complete: function(xhr, textStatus) {
+				 						    //called when complete
+				 						   
+				 						  },
+				 						  success: function(data, textStatus, xhr) {
+				 						    //called when successful
+				 						     if(data == "Fim") { window.location.reload(); }	
+				 						    	$("#ambiente").html("");
+				 						    	$("#ambiente").html(data).hide().show('drop');
+				 						    
+				 						  },
+				 						  error: function(xhr, textStatus, errorThrown) {
+				 						    //called when there is an error
+				 						    alert('error');
+				 						  }
+				 						});					
+
+
+			 						return false;
 					}
-					
-					btnAuto();
-					
 					/*função para parar a rotação*/
 						
 					
 
+					//localStorage.setItem("todoData", "Elton oliveira");
+
 
  			})
+/*
+
+	USAGE STORAGE
+
+	// Saving
+  $.Storage.saveItem('cow','moo');
+
+  // Loading
+  $.Storage.loadItem('cow');
+
+  // Delete
+  $.Storage.deleteItem('cow');
+
+  // Clear all values
+  $.Storage.deleteAll();
+
+*/
  	</script>	
 </html>
