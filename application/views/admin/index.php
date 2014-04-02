@@ -82,7 +82,7 @@
 			  			<li <?=($page == "cadastraCategoria")  	  ?  'class="active"' : ""; ?>><a href="<?=base_url(); ?>admin/painel_admin/cadastraCategoria/" ><span class="glyphicon glyphicon-th-list"></span> Categorias          </a></li>
 			  			<li  <?=($page == "cadastraConteudo") 	  ?  'class="active"' : ""; ?>><a href="<?=base_url(); ?>admin/painel_admin/cadastraConteudo/"><span class="glyphicon glyphicon-ok-sign"></span> Conteúdo </a></li>
 			  			<!--<li><a href=""><span class="glyphicon glyphicon-ok-sign"></span> Perguntas </a></li>-->
-			  			<li><a href=""><span class="glyphicon glyphicon-off"></span> Sair do Sistema </a></li>
+			  			<li><a href="<?=base_url(); ?>admin/painel_admin/sair/"><span class="glyphicon glyphicon-off"></span> Sair do Sistema </a></li>
 
 					</ul>
 

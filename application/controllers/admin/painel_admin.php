@@ -211,44 +211,12 @@ JAVASCRIPT;
 	
 
 	/***********************END********************************/
-	/*************DEBUG***************************************/
-	public function leitura(){
-				
-				 $this->db->where('id',3); 	
-		$dados = $this->db->get('tbl_conteudo')->result();
-		
-		foreach ($dados as $value) {
-			
-			$array = $value->conteudo ;
+	
+	public function sair(){
 
-		}
-
-
-		$function = function( $dados ){
-
-			$lista = explode(';', $dados);
-			if(is_array($lista)){
-
-				$lista = array_filter($lista);
-				$ultimo = end($lista);
-			}
-
-			echo strip_tags(($ultimo));
-			
-			
-
-		};
-		 
-
-		echo $function($array);
-
-
-
-
-		
+		$this->session->sess_destroy();
+		redirect();
 	}
-
-	/********END DEBUG************************************/
 
 	public function getJquery(){
 		echo '<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>';
