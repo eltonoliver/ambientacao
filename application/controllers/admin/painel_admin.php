@@ -267,9 +267,9 @@ JAVASCRIPT;
 	/*FUNCTIONS CALLBACK*/
 
 	public function encryptPassWordCallback($postArray = null) {
-		  $this->load->library('encrypt');
-		  $key = '#$%!&#*$(%*()(#$&$*$&*&*';
-		  $postArray['senha'] = $this->encrypt->encode($postArray['senha'], $key);
+		  
+		  
+		  $postArray['senha'] = md5($postArray['senha']);
 		 
 		  return $postArray;
 	}

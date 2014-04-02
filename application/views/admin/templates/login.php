@@ -48,7 +48,7 @@
     </div>
   </div>
 </form>
-  <div><center>  <?=validation_errors(); ?></center></div>
+  <div><center>  <?=validation_errors(); ?> <?=$this->session->flashdata('erro');  ?></center></div>
 </div>
 
 

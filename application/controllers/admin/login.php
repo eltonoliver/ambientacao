@@ -28,21 +28,58 @@ class Login extends CI_Controller {
 				$this->index();
 		
 			}else{
-			
-				$this->session->set_flashdata('msg', 'Cadastrado com sucesso!');
-				redirect("caminho/");
+				
+			 		
+			  		$senha = md5($this->input->post('senha'));
+			  		$email = $this->input->post('email');
+
+
+
+					$this->db->get_where( 'tbl_usuario', array( 'senha' => $senha, 'email' => $email ) );
+					$query = $this->db->affected_rows();
+
+					if(!$query){
+
+						throw new Exception("Dados inválidos");
+						
+					}	
+
+					/********************/
+
+								$this->db->select('id,nome');
+								$this->db->where('email', $email);
+					$listaDados = $this->db->get('tbl_usuario')->result();	
+
+
+					$sessaoUser = array( 
+								 			   'id'	   		=> $listaDados[0]->id,
+							                   'nome'  		=> $listaDados[0]->nome,
+								               'email' 		=> $email,
+								               'logado'		=> TRUE					
+								               );
+
+				    $this->session->set_userdata($sessaoUser);
+
+
+					/********************/
+
+					
+					
+					redirect("admin/painel_admin/");
 		
 			}
 			}catch(Exception $e){
-				$this->session->set_flashdata('erro', $e->getMessage());
-				redirect("caminho");
-		
-				
+				$erro = '<div class="alert alert-warning"> '.$e->getMessage().' </div>';
+				$this->session->set_flashdata('erro',$erro );
+				redirect("admin/login/");
+								
 			}
 		
 	}
 
 }
+
+
 
 /* End of file admin.php */
 /* Location: ./application/controllers/admin.php */
