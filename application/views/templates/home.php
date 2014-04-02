@@ -75,33 +75,21 @@
         
           <div class="container">
           	<img src="<?php echo base_url(); ?>assets/banner/banner1.jpg" alt="First slide" class="img-responsive">
-            <div class="carousel-caption">
-              <h1>Faça Parte da Nossa Equipe de Colaboradores.</h1>
-              <p> A missão do <code>Senac</code> é "Educar para o trabalho em atividades de comércio de bens, serviços e turismo", através de ações educacionais e disseminação de conhecimentos no comércio e serviços.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Saiba Mais</a></p>
-            </div>
+          
           </div>
         </div>
         <div class="item">
          
           <div class="container">
           	<img src="<?php echo base_url(); ?>assets/banner/banner2.jpg" alt="Second slide" class="img-responsive">
-            <div class="carousel-caption">
-              <h1>Ambiente de Integração - Senac Manaus.</h1>
-               <p> A missão do <code>Senac</code> é "Educar para o trabalho em atividades de comércio de bens, serviços e turismo", através de ações educacionais e disseminação de conhecimentos no comércio e serviços.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Galeria de Imagens</a></p>
-            </div>
+          
           </div>
         </div>
         <div class="item">
 
           <div class="container">
           	<img src="<?php echo base_url(); ?>assets/banner/banner3.jpg" alt="Third slide" class="img-responsive">
-            <div class="carousel-caption">
-              <h1>Aqui você terá um plano de carreira.</h1>
-              <p> A missão do <code>Senac</code> é "Educar para o trabalho em atividades de comércio de bens, serviços e turismo", através de ações educacionais e disseminação de conhecimentos no comércio e serviços.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Saiba Mais</a></p>
-            </div>
+           
           </div>
         </div>
       </div>
