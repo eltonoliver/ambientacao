@@ -72,7 +72,7 @@ class Ambientacao extends CI_Controller {
 									 		<br><br><br>
 									 		<input type="hidden" id="idConteudo" name="idConteudo" value="'.$value->id.'" />
 									 		<input type="hidden" name="idcategoria" value="'.$value->tbl_categoria_id.'" />
-									 		<input type="hidden" name="idfuncionario" value="100" />
+									 		<input type="hidden" name="idfuncionario" value="'.$this->session->userdata('id').'" />
 	      									<button type="submit" class="btn btn-default">Enviar</button>
 	    								
 									 ';	

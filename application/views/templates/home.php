@@ -1,4 +1,9 @@
     <div class="navbar-wrapper">
+          <?=validation_errors();  ?>
+      
+      
+          <?=$this->session->flashdata('msg');?>
+       
       <div class="container">
 
         <div class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -15,8 +20,7 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
+                
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ambientes Web <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -30,27 +34,33 @@
            
                 <li  style="margin-top:5px; " class="col-xs-6 col-md-4"> 
            
-                  
-                   <label class="sr-only" for="matricula">Matrícula</label>
-                   <input type="text" class="form-control" id="matricula" placeholder="Entre com sua matrícula">
-               
+                  <?=form_open('home/validaMatricula'); ?>
+                     <label class="sr-only" for="matricula">Matrícula</label>
+                     <input type="text" class="form-control" id="matricula" placeholder="Matrícula" name="matricula">
+                 
 
                </li>
                <li>&nbsp;</li>
+               
+              
               
                <li style="margin-top:5px;">
-                    <button type="submit" class="btn btn-default">Entrar</button>
+                    <input type="submit" class="btn btn-default" value="Entrar">
                </li>
-              
+               <?=form_close(); ?>
               </ul>
             </div>
           </div>
         </div>
 
+
       </div>
+
+    
+    
     </div>
 
-
+    
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">

@@ -12,10 +12,10 @@
  	</header>
  	<body>
  		
- 		
+ 			
  			
  			<?=$contents;?>
-
+ 			
 	
  	</body>
  	<!--Jquery-->

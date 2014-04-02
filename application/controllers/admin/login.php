@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 	
 	public function index(){
 		
-		$this->template->load('admin/index','admin/templates/login');	
+		$this->load->view('admin/templates/login');	
 	}
 
 	public function logar(){
