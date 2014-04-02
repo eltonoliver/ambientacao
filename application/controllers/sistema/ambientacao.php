@@ -63,7 +63,7 @@ class Ambientacao extends CI_Controller {
 							<br><br>
 
 								';
-								echo form_open('url');
+								echo form_open('sistema/ambientacao/corrige/');
 
 									/*********************QUESTOES*********************/
 											
@@ -120,6 +120,65 @@ class Ambientacao extends CI_Controller {
 
 		 	echo $e->getMessage();
 		 }
+		}
+
+		public function corrige(){
+
+			$resposta 	    = $this->input->post('conteudo');
+
+			$idConteudo     = $this->input->post('idConteudo');
+
+			$idfuncionario  = $this->input->post('idfuncionario');
+
+
+		  try{	
+		  	if(!isset($resposta)){
+
+		  		throw new Exception("Escolha uma resposta!");
+		  		
+		  	}
+
+			foreach ($resposta as $value) {
+				
+				$respostaEscolhida =  $value;
+			}
+
+
+						$this->db->where('id', $idConteudo);
+			$questao =  $this->db->get('tbl_conteudo')->result();
+
+
+			$function = function( $dados ){
+
+			$lista = explode(',', $dados);
+				if(is_array($lista)){
+
+					$lista = array_filter($lista);
+				
+				}
+
+			
+				return end($lista);
+			};
+
+			$respostaCerta = htmlspecialchars(trim(strip_tags($function($questao[0]->conteudo))));
+			$respostaCerta = ereg_replace("/&#?[a-z0-9]{2,8};/i","",$respostaCerta);
+			echo $respostaCerta;
+			if(trim($respostaEscolhida) == $respostaCerta){
+
+				echo "Acertou";
+
+			}else{
+
+				echo "Errou";
+			}
+
+			
+
+		  }catch(Exception $e){
+
+		  	echo $e->getMessage();
+		  }
 		}
 
 }
