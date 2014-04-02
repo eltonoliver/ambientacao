@@ -7,7 +7,11 @@ class Painel_admin extends CI_Controller {
 	public function __construct(){
 		   
 	   parent::__construct();
+	   if(!$this->session->userdata('logado')){
 
+			redirect();
+
+		}
 	   $this->load->library('grocery_CRUD');
 	   $this->load->library('mineraDados');
 		
@@ -52,7 +56,7 @@ class Painel_admin extends CI_Controller {
 
 		try{
 			/*ID USER*/
-			$idUser = $this->setIdUser(11)->getIdUser();
+			$idUser = $this->setIdUser($this->session->userdata('id'))->getIdUser();
 
 
 			$crud = new grocery_CRUD();
@@ -81,7 +85,7 @@ class Painel_admin extends CI_Controller {
 	public function cadastraConteudo($id = null){
    		 try{
 			/*ID USER*/
-			$idUser = $this->setIdUser(11)->getIdUser();
+			$idUser = $this->setIdUser($this->session->userdata('id'))->getIdUser();
 
 			$crud = new grocery_CRUD();
 
@@ -179,7 +183,7 @@ JAVASCRIPT;
 			$crud = new grocery_CRUD();
 			
 			/*ID USER*/
-			$idUser = $this->setIdUser(11)->getIdUser();
+			$idUser = $this->setIdUser($this->session->userdata('id'))->getIdUser();
 
 			$crud->set_crud_url_path(site_url('admin/painel_admin/cadastraFuncionario'));
 			$crud->set_table('tbl_funcionario');

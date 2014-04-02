@@ -48,7 +48,8 @@ class Home extends CI_Controller {
 
 						'id'		 => $dadosUser[0]->id,	
 						'nome'       => $dadosUser[0]->nome,
-						'matricula'  => $matricula
+						'matricula'  => $matricula,
+						'logado'	 => true
 					);
 					
 					$this->session->set_userdata( $array );
